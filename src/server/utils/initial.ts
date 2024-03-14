@@ -4,6 +4,8 @@ export const initial = () => {
 
 const setupBrook = () => {
   if (!hasNami()) installNami()
+  if (!has7z()) install7z()
+  if (!hasJb()) installJb()
   if (!hasDenobundle()) installDenobundle()
   if (!hasNico()) installNico()
   if (!hasJoker()) installJoker()
@@ -15,6 +17,28 @@ const setupBrook = () => {
 const hasNami = () => {
   const which = Bun.spawnSync({
     cmd: ['which', 'nami'],
+    stdin: null,
+    stderr: Bun.stderr,
+    stdout: null,
+  })
+  
+  return which.success
+}
+
+const has7z = () => {
+  const which = Bun.spawnSync({
+    cmd: ['which', '7z'],
+    stdin: null,
+    stderr: Bun.stderr,
+    stdout: null,
+  })
+  
+  return which.success
+}
+
+const hasJb = () => {
+  const which = Bun.spawnSync({
+    cmd: ['which', 'jb'],
     stdin: null,
     stderr: Bun.stderr,
     stdout: null,
@@ -99,6 +123,40 @@ const installJoker = () => {
   }
 
   console.log(`joker installed successfully`)
+}
+
+const install7z = () => {
+  console.log(`start install 7z`)
+
+  const install = Bun.spawnSync({
+    cmd: ['nami', 'install', '7z'],
+    stdin: null,
+    stderr: Bun.stderr,
+    stdout: Bun.stdout,
+  })
+
+  if (!install.success) {
+    throw `install 7z failed`
+  }
+
+  console.log(`7z installed successfully`)
+}
+
+const installJb = () => {
+  console.log(`start install Jb`)
+
+  const install = Bun.spawnSync({
+    cmd: ['nami', 'install', 'Jb'],
+    stdin: null,
+    stderr: Bun.stderr,
+    stdout: Bun.stdout,
+  })
+
+  if (!install.success) {
+    throw `install Jb failed`
+  }
+
+  console.log(`Jb installed successfully`)
 }
 
 const installNico = () => {
