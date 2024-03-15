@@ -12,8 +12,8 @@ jobs:
         uses: oven-sh/setup-bun@v1
 
       - name: bundle
-      - run: bun install
-      - run: bun bundle
+        run: bun install
+        run: bun bundle
 
       # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       # - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
