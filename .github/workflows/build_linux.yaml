@@ -13,8 +13,10 @@ jobs:
       - name: setup bun
         uses: oven-sh/setup-bun@v1
 
-      - name: bundle
+      - name: install deps
         run: bun install
+
+      - name: bundle app
         run: bun bundle
 
       # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
