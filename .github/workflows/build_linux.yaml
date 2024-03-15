@@ -7,8 +7,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: set up
+      - name: checkout code
         uses: actions/checkout@v4
+
+      - name: setup bun
         uses: oven-sh/setup-bun@v1
 
       - name: bundle
